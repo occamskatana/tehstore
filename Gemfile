@@ -10,6 +10,7 @@ gem 'simple_form'
 gem 'paperclip'
 gem 'bootstrap-sass'
 gem 'sqlite3'
+gem 'country_select'
 
 gem 'sass-rails', '~> 5.0'
 
