@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
 
 
    enum role: [:user, :fulfiller, :admin]
+
+   has_many :items
 end

@@ -5,3 +5,57 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+
+
+
+
+
+
+20.times do users = User.create(
+
+	email: Faker::Internet.email,
+	first_name: Faker::Name.first_name,
+	last_name: Faker::Name.last_name,
+	street: Faker::Address.street_address,
+	city: Faker::Address.city,
+	zip_code: Faker::Address.zip_code,
+	country: Faker::Address.country,
+	phone_number: Faker::PhoneNumber.phone_number,
+	password: "helloworld"
+
+	) 
+
+end
+
+
+users = User.all
+
+
+
+
+
+
+50.times do items = Item.create(
+
+	title: Faker::Hipster.word,
+	public_description: Faker::Hacker.say_something_smart,
+	internal_description: Faker::Lorem.sentences(3),
+	sale_price: rand(1.40000),
+	purchase_price: rand(1.200),
+	store_name: Faker::Hipster.word,
+	street_address: Faker::Address.street_address,
+	city: Faker::Address.city,
+	state: Faker::Address.state,
+	zip: Faker::Address.zip_code,
+	country: Faker::Address.country,
+	user: users.sample
+	)
+end
+
+items = Item.all 
+
+
+puts "#{User.count} users now in the database"
+puts "#{Item.count} items now in the database"

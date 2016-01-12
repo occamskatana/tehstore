@@ -1,0 +1,8 @@
+<div class="container-fluid">
+	<h1 align="center">Marketplace</h1>
+		<% @items.each do |item| %>
+			<div class="container" align="center">
+				<%= item.title %> <%= item.sale_price %>
+			</div>
+		<% end %>
+</div>
