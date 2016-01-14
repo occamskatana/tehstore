@@ -1,2 +1,21 @@
-<h1>Items#new</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+<h1 align="center"> New Item </h1>
+
+<div class="container-fluid">
+	<div class="form-wide">	
+		<%= simple_form_for @item do |f| %>
+			<%= f.input :title, required: true, autofocus: true %>
+			<%= f.input :public_description, required: true %>
+			<%= f.input :internal_description, required: true, hint: 'This will not be shown on the listing and is simply a way to help our fulfillment agents find the correct item. Please be extremely specific.' %>
+			<%= f.input :sale_price, required: true, hint: 'This is the price that your item will be listed for' %>
+			<%= f.input :purchase_price, required: true, hint: 'This is the original prirce of the item. Please validate that this price is correct before posting' %>
+			<%= f.input :store_name, hint: 'The store name and address will not be shown publically. They are a way for us to locate your item.' %>
+			<%= f.input :street_address, required: :true %>
+			<%= f.input :city, required: :true %>
+			<%= f.input :state, required: :true %>
+			<%= f.input :country, required: :true %>
+			<%= f.input :zip %>
+			<%= f.input :avatar, as: :file, required: :true, hint: 'Upload your picture here' %>
+			<%= f.submit %>
+			<% end %>
+		</div>
+	</div>
