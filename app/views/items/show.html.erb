@@ -1,2 +1,30 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<div class="container-fluid">
+	<div class="container item-show-title" align="center">
+		<h2><%= @item.title %></h2>
+	</div>
+
+	<div class="container item-info">
+		<div class="row">	
+			<div class="col-md-4">
+				<h3>Price: <%= @item.sale_price %></h3>
+				<h3><%= distance_of_time_in_words(@item.created_at.time, Time.now)%> old</h3>
+				<%= link_to "Barter"," ", class: 'btn btn-warning' %>
+				<%= link_to "Buy Now!", "", class: 'btn btn-success' %>
+				<br>
+				<br>
+				<%= link_to "Back", items_path, class: 'btn btn-primary' %>
+			</div>
+			<div class="col-md-4">
+				<h3>Description</h3><br>
+				<h4>Locaion: <strong><%= @item.country %> </strong> </h4>
+				<h5><%= @item.public_description %></h5>
+			</div>
+			<div class="col-md-4">
+				<h3>Images</h3>
+				<%= image_tag @item.avatar.url(:medium) %>
+			</div>
+		</div>
+		<br >
+	</div>
+</div>
+

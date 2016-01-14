@@ -1,7 +1,14 @@
 <div class="container-fluid">
 	<div class="jumbotron">
-		<h1>Store and Move</h1>
-		<h2>Redefining the Global Shopping experience.</h2>
-		<%= link_to "Get Started", new_user_registration_path, class: 'btn btn-success' %>
+		<div class="container" align="center">
+			<h1>Snap and Move</h1>
+			<h2>Redefining the Global Shopping experience.</h2>
+			<% if !current_user %>
+				<%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success' %>
+				<%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %>
+			<% else %>
+				<%= link_to "Browse Shop", items_path, class: 'btn btn-success' %>
+			<% end %>
+			</div>
 	</div>
 </div>
