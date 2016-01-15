@@ -12,7 +12,7 @@
 			<%= f.input :street_address, required: :true %>
 			<%= f.input :city, required: :true %>
 			<%= f.input :state, required: :true %>
-			<%= f.input :country, required: :true %>
+			<%= f.input :country, required: :true, priority: ["United States"] %>
 			<%= f.input :zip %>
 			<%= f.input :avatar, as: :file, required: :true, hint: 'Upload your picture here' %>
 			<%= f.submit %>

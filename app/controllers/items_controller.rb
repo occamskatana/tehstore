@@ -12,8 +12,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:id])
-    @item = Item.new
+    @user = current_user
+    @item = @user.items.new(item_params)
 
     if @item.save
       flash[:notice] = "Success! Your item is now in the store!"
@@ -33,5 +33,7 @@ class ItemsController < ApplicationController
 
   private
 
-  params.require(:item).allow(:title, :public_description, :internal_description, :sale_price, :purchase_price, :store_name, :street_address, :city, :state, :country, :zip, :user)
+  def item_params
+    params.require(:item).permit(:title, :public_description, :internal_description, :sale_price, :purchase_price, :store_name, :street_address, :city, :state, :country, :zip, :user, :avatar)
+  end
 end
