@@ -25,8 +25,21 @@ class ItemsController < ApplicationController
 
   end
 
-  def update
+  def edit 
+    @item = Item.find(params[:id])
+  end
 
+  def update
+    @item = Item.find(params[:id])
+    @item.assign_attributes(item_params)
+
+    if @item.save
+      flash[:notice] = "Your item was saved"
+      redirect_to @item
+    else
+      flash[:error] = "Your item could not be saved"
+      render :edit
+    end
   end
 
   def destroy
@@ -39,9 +52,6 @@ class ItemsController < ApplicationController
       flash[:error] = "Your item could not be successfully destroyed"
       render :index
     end
-  end
-
-  def edit
   end
 
   private
