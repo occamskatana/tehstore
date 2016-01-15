@@ -6,7 +6,7 @@
 	<div class="container item-info">
 		<div class="row">	
 			<div class="col-md-4">
-				<h3>Price: <%= @item.sale_price %></h3>
+				<h3>Price: $<%= @item.sale_price %></h3>
 				<h3><%= distance_of_time_in_words(@item.created_at.time, Time.now).capitalize%> old</h3>
 				<h3><%= pluralize(@item.favorites.count, 'Favorite')%></h3>
 				<%= link_to "Barter"," ", class: 'btn btn-warning' %>
@@ -23,7 +23,8 @@
 				<h4>Locaion: <strong><%= @item.country %> </strong> </h4>
 				<h5><%= @item.public_description %></h5>
 				<strong><h4> Share this Item!</h4></strong>
-				<%= social_share_button_tag(@item.title, popup: true) %>
+				<%= social_share_button_tag(@item.title, popup: true) %><br />
+				<strong>Tags: <%= @item.tag_list %></strong>
 			</div>
 			<div class="col-md-4">
 				<h3>Images</h3>

@@ -1,4 +1,8 @@
 class Item < ActiveRecord::Base
+
+	acts_as_taggable
+	ActsAsTaggableOn.force_lowercase = true
+
   belongs_to :user
   has_many :favorites, dependent: :destroy
 

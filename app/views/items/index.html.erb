@@ -10,12 +10,13 @@
 	<% @items.each do |item| %>
 		<div class="row index">
 			<div class="col-md-4 item-title"><h3>
-				<%= link_to "#{item.title}", item_path(item) %></h3>
+				<%= link_to "#{item.title.capitalize}", item_path(item) %></h3>
 				<%= image_tag item.avatar.url(:thumb) %>
 			</div> 
 			<div class="col-md-4 price">
 				<h3>Price: <strong> <%= item.sale_price %> </strong></h3>
-				<p>Posted: <strong> <%= distance_of_time_in_words(item.created_at.time, Time.now)%> ago by <%= item.user.first_name + " " + item.user.last_name %></strong></p>
+				<p>Posted: <strong> <%= distance_of_time_in_words(item.created_at.time, Time.now)%> ago by <%= item.user.first_name + " " + item.user.last_name %></strong></p><br />
+				<p><strong> Tags:</strong> <%= item.tag_list %> </p>
 			</div>
 			<div class="col-md-4 item-buttons">
 				<% if current_user.admin? || item.user == current_user %>

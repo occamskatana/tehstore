@@ -50,7 +50,8 @@ users = User.all
 	state: Faker::Address.state,
 	zip: Faker::Address.zip_code,
 	country: Faker::Address.country,
-	user: users.sample
+	user: users.sample,
+	tag_list: Faker::Hipster.words(5)
 	)
 end
 
