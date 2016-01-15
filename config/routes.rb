@@ -2,7 +2,13 @@ Rails.application.routes.draw do
 
  
 
-  resources :items
+  get 'favorites/create'
+
+  get 'favorites/destroy'
+
+  resources :items do 
+    resources :favorites, only: [:create, :destroy]
+  end
 
   devise_for :users, controllers: {
     registrations: 'registrations'

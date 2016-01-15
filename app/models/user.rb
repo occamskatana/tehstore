@@ -10,5 +10,10 @@ class User < ActiveRecord::Base
 
    enum role: [:user, :fulfiller, :admin]
 
-   has_many :items
+   has_many :items, dependent: :destroy
+   has_many :favorites, dependent: :destroy
+
+   def favorite_for(item)
+   	favorites.where(item_id: item.id).first
+   end
 end
