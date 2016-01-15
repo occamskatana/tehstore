@@ -18,6 +18,8 @@
 				<h3>Description</h3><br>
 				<h4>Locaion: <strong><%= @item.country %> </strong> </h4>
 				<h5><%= @item.public_description %></h5>
+				<strong><h4> Share this Item!</h4></strong>
+				<%= social_share_button_tag(@item.title, popup: true) %>
 			</div>
 			<div class="col-md-4">
 				<h3>Images</h3>

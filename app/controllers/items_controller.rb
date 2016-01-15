@@ -25,7 +25,20 @@ class ItemsController < ApplicationController
 
   end
 
+  def update
+
+  end
+
   def destroy
+    @item = Item.find(params[:id])
+
+    if @item.destroy
+      flash[:notice] = "Your item has been successfully destroyed"
+      redirect_to items_path
+    else
+      flash[:error] = "Your item could not be successfully destroyed"
+      render :index
+    end
   end
 
   def edit
