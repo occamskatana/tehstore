@@ -40,7 +40,7 @@ users = User.all
 50.times do items = Item.create(
 
 	title: Faker::Hipster.word,
-	public_description: Faker::Hacker.say_something_smart,
+	public_description: Faker::Hipster.sentences(10),
 	internal_description: Faker::Lorem.sentences(3),
 	sale_price: Faker::Number.between(1,500000),
 	purchase_price: Faker::Number.between(1,500000),
