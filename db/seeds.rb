@@ -57,6 +57,12 @@ end
 
 items = Item.all 
 
+100.times do favorites = Favorite.create(
+	user: users.sample,
+	item: items.sample
+	)
+end
 
 puts "#{User.count} users now in the database"
 puts "#{Item.count} items now in the database"
+puts "#{Favorite.count} favorites total"
