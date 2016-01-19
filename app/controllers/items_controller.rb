@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
     if params[:search]
       @items = Item.search(params[:search]).order("created_at DESC")
     else
-      @items = Item.all
+      @items = Item.order(params[:sort] + " " + params[:direction] )
     end
   end
 
