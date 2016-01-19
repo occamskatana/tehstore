@@ -2,8 +2,10 @@ class ItemsController < ApplicationController
   def index
     if params[:search]
       @items = Item.search(params[:search]).order("created_at DESC")
+    elsif params[:sort]
+      @items = Item.all.reorder(params[:sort] + " " + params[:direction])
     else
-      @items = Item.order(params[:sort] + " " + params[:direction] )
+      @items = Item.all
     end
   end
 

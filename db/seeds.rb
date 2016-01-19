@@ -13,7 +13,7 @@
 
 
 
-20.times do users = User.create(
+10.times do users = User.create(
 
 	email: Faker::Internet.email,
 	first_name: Faker::Name.first_name,
@@ -37,7 +37,7 @@ users = User.all
 
 
 
-50.times do items = Item.create(
+25.times do items = Item.create(
 
 	title: Faker::Hipster.word,
 	public_description: Faker::Hipster.sentences(10),
