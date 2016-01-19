@@ -10,5 +10,9 @@ class Item < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   default_scope {order('created_at DESC')}
+
+  def self.search(search)
+  	where("title LIKE ?", "%#{search}")
+  end
   
 end
