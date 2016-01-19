@@ -12,7 +12,10 @@ class Item < ActiveRecord::Base
   default_scope {order('created_at DESC')}
 
   def self.search(search)
-  	where("title LIKE ?", "%#{search}")
+  	where("title LIKE ?", "%#{search}%")
   end
-  
+
+  def sort_order(default)
+    "#{(params[:c] || default.to_s).gsub(/[\s;'\"]/,'')} #{params[:d] == 'down' ? 'DESC' : 'ASC'}"
+	end 
 end
