@@ -6,6 +6,10 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+def sort_order(default)
+      "#{(params[:c] || default.to_s).gsub(/[\s;'\"]/,'')} #{params[:d] == 'down' ? 'DESC' : 'ASC'}"
+end 
+
 module Tehstore
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

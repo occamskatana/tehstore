@@ -1,11 +1,13 @@
 class ItemsController < ApplicationController
+
   def index
     if params[:search]
-      @items = Item.search(params[:search]).order("created_at DESC")
+      @items = Item.search(params[:search]).order("sale_price DESC")
     else
-      @items = Item.all
+      @items = Item.all.order(sort_order("sale_price"))
     end
   end
+
 
   def show
     @item = Item.find(params[:id])

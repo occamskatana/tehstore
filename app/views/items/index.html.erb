@@ -10,7 +10,7 @@
 			<% end %>	
 		</div>
 		<div class="col-md-6">
-			<%= sort_link 'Price', :sale_price %>
+			<%= sort_link 'Sort By Price', :sale_price, class: 'btn btn-success' %>
 			<%= form_tag(items_path, :method => "get", id: "search-form") do %>
 				<%= text_field_tag :search, params[:search], placeholder: "Search Listings" %>
 				<%= submit_tag "Search" %>
