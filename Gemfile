@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'will_paginate'
+
 gem 'therubyracer'
 gem 'rails', '4.2.4'
 gem 'pry-rails'
@@ -14,6 +14,8 @@ gem 'faker'
 gem 'bootstrap-sass'
 gem 'sqlite3'
 gem 'country_select'
+gem 'stripe'
+gem 'figaro'
 
 group :production do 
 	gem 'pg'

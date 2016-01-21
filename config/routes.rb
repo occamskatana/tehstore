@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     registrations: 'registrations'
   }
   resources :users, only: [:show]
+  resources :charges, only: [:new, :create]
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
