@@ -1,5 +1,6 @@
 class ChargesController < ApplicationController
 
+	before_filter :authorize_user
 
 	def create
 		amount = 500
@@ -32,4 +33,14 @@ class ChargesController < ApplicationController
 			amount: amount
 		}
 	end
+
+	private
+
+	def authorize_user
+		unless current_user.present?
+			flash[:error] = "You must be signed in to access this"
+			redirect_to root_path
+		end
+	end
+
 end
