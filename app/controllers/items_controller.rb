@@ -4,11 +4,11 @@ class ItemsController < ApplicationController
 
   def index
     if params[:search]
-      @items = Item.search(params[:search]).order("created_at DESC")
+      @items = Item.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     elsif params[:sort]
-      @items = Item.all.reorder(sort_column + " " + sort_direction)
-    else
-      @items = Item.all
+      @items = Item.all.reorder(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 10)
+    else params[:page]
+      @items = Item.paginate(:page => params[:page], :per_page => 10)
     end
   end
 

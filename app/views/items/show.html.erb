@@ -14,7 +14,7 @@
 					
 						<h5 align="left"><%= @item.public_description %></h5>
 						<h3>Location: <strong><%= @item.country %> </strong> </h3>
-						<h3>Price: $<%= @item.sale_price %></h3>
+						<h3>Price: $<%= number_with_delimiter(@item.sale_price) %></h3>
 
 				</div>
 				<strong><h4> Share this Item!</h4></strong>

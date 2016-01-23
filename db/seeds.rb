@@ -63,19 +63,20 @@ items = Item.all
 	)
 end
 
-admin = User.create!(
 
-	email: "johngallweycarter@gmail.com",
-	first_name: "John",
-	last_name: "Carter",
-	street: "2628 W Sunset Dr",
-	city: "Tampa",
-	zip_code: "33629",
-	country: "US",
-	phone_number: "561-870-8191",
-	password: "msghguua1!"
+	admin = User.create!(
 
-	)
+		email: "johngallweycarter@gmail.com",
+		first_name: "John",
+		last_name: "Carter",
+		street: "2628 W Sunset Dr",
+		city: "Tampa",
+		zip_code: "33629",
+		country: "US",
+		phone_number: "561-870-8191",
+		password: "msghguua1!"
+
+		)
 
 puts "#{User.count} users now in the database"
 puts "#{Item.count} items now in the database"

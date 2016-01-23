@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'will_paginate'
 gem 'therubyracer'
 gem 'rails', '4.2.4'
 gem 'pry-rails'
