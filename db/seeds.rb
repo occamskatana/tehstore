@@ -37,7 +37,7 @@ users = User.all
 
 
 
-25.times do items = Item.create(
+50.times do items = Item.create(
 
 	title: Faker::Hipster.word,
 	public_description: Faker::Hipster.sentences(10),
@@ -64,19 +64,19 @@ items = Item.all
 end
 
 
-	admin = User.create!(
+	# admin = User.create!(
 
-		email: "johngallweycarter@gmail.com",
-		first_name: "John",
-		last_name: "Carter",
-		street: "2628 W Sunset Dr",
-		city: "Tampa",
-		zip_code: "33629",
-		country: "US",
-		phone_number: "561-870-8191",
-		password: "msghguua1!"
+	# 	email: "johngallweycarter@gmail.com",
+	# 	first_name: "John",
+	# 	last_name: "Carter",
+	# 	street: "2628 W Sunset Dr",
+	# 	city: "Tampa",
+	# 	zip_code: "33629",
+	# 	country: "US",
+	# 	phone_number: "561-870-8191",
+	# 	password: "msghguua1!"
 
-		)
+	# 	)
 
 puts "#{User.count} users now in the database"
 puts "#{Item.count} items now in the database"
