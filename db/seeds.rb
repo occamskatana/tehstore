@@ -32,10 +32,18 @@ end
 
 users = User.all
 
-
-
-
-
+	fulfiller = User.create(
+		email: Faker::Internet.email,
+		first_name: Faker::Name.first_name,
+		last_name: Faker::Name.last_name,
+		street: Faker::Address.street_address,
+		city: Faker::Address.city,
+		zip_code: Faker::Address.zip_code,
+		country: Faker::Address.country,
+		phone_number: Faker::PhoneNumber.phone_number,
+		role: "fulfiller",
+		password: "helloworld"
+		)
 
 50.times do items = Item.create(
 
@@ -63,6 +71,15 @@ items = Item.all
 	)
 end
 
+50.times do order = Order.create(
+	item_id: items.sample.id,
+	user_id: users.sample.id,
+	status: 1,
+	)
+end
+
+orders = Order.all
+
 
 	# admin = User.create!(
 
@@ -81,3 +98,4 @@ end
 puts "#{User.count} users now in the database"
 puts "#{Item.count} items now in the database"
 puts "#{Favorite.count} favorites total"
+puts "#{Order.count} orders total"

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :orders, only: [:index, :show]
 
   resources :items do 
     resources :favorites, only: [:create, :destroy]

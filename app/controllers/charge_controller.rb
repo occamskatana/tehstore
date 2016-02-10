@@ -5,7 +5,7 @@ class ChargeController < ApplicationController
 
 	def create
 		@item = Item.find(params[:item_id])
-		
+
 		if @item
 			customer = Stripe::Customer.create(
 				email: current_user.email,
@@ -18,7 +18,7 @@ class ChargeController < ApplicationController
 				description: "store item bought",
 				currency: 'usd'
 				)
-
+			@item.orders.create!(order_params)
 			flash[:notice] = "Thanks for the chips #{current_user.first_name}"
 		else
 			flash[:notice] = "Stop doing that bitch!"
@@ -46,6 +46,10 @@ class ChargeController < ApplicationController
 			flash[:error] = "You must be signed in to access this"
 			redirect_to root_path
 		end
+	end
+
+	def order_params
+		params.require(:order).permit(:item_id, :fulfilled)
 	end
 
 end

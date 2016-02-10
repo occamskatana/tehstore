@@ -1,5 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :item
 
-  before_save {self.fulfilled ||= false}
+  enum status: [:unfulfilled, :processing, :shipped, :fulfilled]
+
+  before_save {self.status ||= :unfulfilled}
 end

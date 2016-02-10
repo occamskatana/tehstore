@@ -1,0 +1,9 @@
+<div class="container-fluid">
+	<div class="page-header" align="center">
+		<h2>Welcome, <%= current_user.first_name %></h2><br>
+		<p> Check out the orders that need to be fulfilled below <p>
+	</div>
+	<div class="row-fluid">
+		<%= render @orders %>
+	</div>
+</div>
