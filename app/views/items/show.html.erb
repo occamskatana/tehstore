@@ -23,7 +23,7 @@
 			
 				<h3><%= pluralize(@item.favorites.count, 'Favorite')%></h3>
 				<%= link_to "Haggle"," ", class: 'btn btn-warning' %>
-				<%= link_to "Buy Now!", "", class: 'btn btn-success' %>
+				<%= link_to "Buy Now!", new_item_order_path(@item), class: 'btn btn-success' %>
 				<% if current_user %>
 					<%= render partial: 'favorites/favorite', locals: {item: @item} %>
 				<% end %>

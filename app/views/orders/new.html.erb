@@ -1,0 +1,22 @@
+<div class="container-fluid form-wide">
+<%= simple_form_for [@item, Order.new] do |f| %>
+	<h1> Do you want to buy <%= @item.title %><br>
+	 for <%= @item.sale_price%> ?
+<% end %>
+
+<%= link_to do %>
+<form action="/charge" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_uZU1kdobj5iQQn0dxe1YFMtQ"
+    data-image="/img/documentation/checkout/marketplace.png"
+    data-email="<%= current_user.email %>"
+    data-name="Stripe.com"
+    data-description="2 widgets"
+    data-amount="<%= (@item.sale_price * 100) %>"
+    data-locale="auto">
+  </script>
+ <% end %>
+ <input type="hidden" name="item_id" value="<%= @item.id %>">
+</form>
+</div>

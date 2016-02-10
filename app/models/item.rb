@@ -1,4 +1,5 @@
 class Item < ActiveRecord::Base
+  has_many :orders
 
 	acts_as_taggable
 	ActsAsTaggableOn.force_lowercase = true
