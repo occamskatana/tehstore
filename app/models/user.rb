@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 
    has_many :items, dependent: :destroy
    has_many :favorites, dependent: :destroy
+   has_many :orders
 
    def favorite_for(item)
    	favorites.where(item_id: item.id).first
