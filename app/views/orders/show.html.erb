@@ -1,0 +1,49 @@
+<div class="container-fluid order-body">
+	<div class="page-header" align="center">
+		<h2><%= @order.item.title %></h2>
+	</div>
+
+	<div class="row-fluid show-orders">
+		<div class="col-md-6 well order-info-div" align="center">
+			<h3>Item Pickup Info</h3>
+			<h2 class="warning"><strong>You should pay $<%=number_with_delimiter(@order.item.purchase_price) %></strong><br></h2>
+				<strong>Store:</strong> <%= @order.item.store_name %>
+				<h4><strong>Store Address</strong></h4>
+				<%= @order.item.street_address %><br>
+				<%= @order.item.city %> <br>
+				<%= @order.item.country %><br />
+			<h4>Item Description</h4><br />
+				<h4><strong>Public Description</strong></h5>
+				<%= @order.item.public_description %>
+				<h5><strong>Internal Description</strong></h5>
+				<%= @order.item.internal_description %><br />
+		</div>
+
+		<div class="col-md-6 well order-info-div" align="center">
+			<h3>Buyer Info</h3>
+				<h4>
+					<%= @order.user.first_name + " " + @order.user.last_name %><br>
+					<strong>Email:</strong> <%= @order.user.email %><br>
+					<strong>Phone:</strong> <%= @order.user.phone_number %>
+
+			<h4>Ship To </h4>
+				<p>
+					<%= @order.user.first_name %> <%= @order.user.last_name %> <br>
+					<%= @order.user.street %><br>
+					<%= @order.user.city %>, <%= @order.user.zip_code %>, <%= @order.user.country %>
+				</p>
+				<br />
+				
+				<div class="form-wide">
+					<%= simple_form_for @order, method: :patch do |f| %>
+						<%= f.input :status, as: :radio_buttons, collection: [:unfulfilled, :processing, :shipped, :fulfilled] %>
+						<%= f.submit %>
+					<% end %>
+				</div>
+				<h3 class="warning">
+					This order was created <%= time_ago_in_words(@order.created_at) %> ago.<br>
+					This order was updated to <%= @order.status %> <%= time_ago_in_words(@order.updated_at) %> ago
+				</h3>
+		</div>
+	</div>
+</div>

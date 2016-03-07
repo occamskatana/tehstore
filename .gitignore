@@ -17,3 +17,6 @@
 /tmp
 
 /public/system/items/avatars
+
+# Ignore application configuration
+/config/application.yml

@@ -14,7 +14,7 @@
 					
 						<h5 align="left"><%= @item.public_description %></h5>
 						<h3>Location: <strong><%= @item.country %> </strong> </h3>
-						<h3>Price: $<%= @item.sale_price %></h3>
+						<h3>Price: $<%= number_with_delimiter(@item.sale_price) %></h3>
 
 				</div>
 				<strong><h4> Share this Item!</h4></strong>
@@ -23,7 +23,7 @@
 			
 				<h3><%= pluralize(@item.favorites.count, 'Favorite')%></h3>
 				<%= link_to "Haggle"," ", class: 'btn btn-warning' %>
-				<%= link_to "Buy Now!", "", class: 'btn btn-success' %>
+				<%= link_to "Buy Now!", new_item_order_path(@item), class: 'btn btn-success' %>
 				<% if current_user %>
 					<%= render partial: 'favorites/favorite', locals: {item: @item} %>
 				<% end %>

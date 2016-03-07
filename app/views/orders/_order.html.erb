@@ -1,0 +1,12 @@
+<div class="col-md-4" align="center">
+	<h5> 
+		<%= link_to order_path(order) do %>
+			<div class="well orders">
+				<strong> Order ID: <%= order.id %></strong><br><br />
+				Item: <%= order.item.title %> <br>
+				Origin: <%= order.item.city %>, <%= order.item.country %><br>
+				Status: <%= order.status %>
+			</div>
+		<% end %>
+	</h5>
+</div>

@@ -1,9 +1,14 @@
 class ItemsController < ApplicationController
+
+  helper_method :sort_column, :sort_direction
+
   def index
     if params[:search]
-      @items = Item.search(params[:search]).order("created_at DESC")
-    else
-      @items = Item.all
+      @items = Item.search(params[:search]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    elsif params[:sort]
+      @items = Item.all.reorder(sort_column + " " + sort_direction).paginate(:page => params[:page], :per_page => 10)
+    else params[:page]
+      @items = Item.paginate(:page => params[:page], :per_page => 10)
     end
   end
 
@@ -59,6 +64,14 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def sort_column
+    Item.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+  
+  def sort_direction
+    %w[ASC DESC].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 
   def item_params
     params.require(:item).permit(:tag_list, :title, :public_description, :internal_description, :sale_price, :purchase_price, :store_name, :street_address, :city, :state, :country, :zip, :user, :avatar)

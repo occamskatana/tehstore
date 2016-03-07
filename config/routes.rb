@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
 
- 
-
-  get 'favorites/create'
-
-  get 'favorites/destroy'
+  resources :orders, only: [:index, :show, :update, :create]
 
   resources :items do 
     resources :favorites, only: [:create, :destroy]
+    resources :orders, only: [:new, :create]
   end
 
   devise_for :users, controllers: {
     registrations: 'registrations'
   }
   resources :users, only: [:show]
+  
   root 'welcome#index'
+
+  resources :charge, only: [:new, :create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
